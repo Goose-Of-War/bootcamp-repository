@@ -8,7 +8,7 @@
 
 body {
 	height: 100vh;
-	background: #066acd;
+	background: #307fce;
 }
 
 .container {
@@ -91,7 +91,7 @@ body {
 }
 
 .task button {
-	background-color: #6583e5;
+	background-color: #cf3030;
 	color: #ffffff;
 	border: none;
 	cursor: pointer;
