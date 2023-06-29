@@ -1,6 +1,13 @@
-body {
+.app {
+	padding: 30px;
+	height: 100vh;
 	background-color: #282c34;
-	padding: 40px;
-	font-family: Arial;
-	text-align: center;
+	color: floralwhite;
+}
+
+.todo {
+	align-items: center;
+	display: flex;
+	font-size: 18px;
+	justify-content: space-between;
 }
