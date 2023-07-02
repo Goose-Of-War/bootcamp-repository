@@ -1,0 +1,10 @@
+form {
+	width: 70%;
+	margin: 20px auto;
+	background-color: gray;
+	padding: 10px 5%;
+}
+
+.invalid-feedback {
+	display: inline-block;
+}
