@@ -11,7 +11,7 @@ const RecordTable = ({ records }) => {
 					[...Array(Math.ceil(records.length / 10))].map((_, i) => <Tab label={i + 1} key={i} />)
 				}
 			</Tabs>
-			<Table sx={{ width: '80%', margin: 'auto' }}>
+			<Table sx={{ width: '80%', margin: '30px auto', border: 'solid 1px', borderRadius: '30px' }}>
 				<TableHead>
 					<TableRow>
 						<TableCell sx={{ fontWeight: 'bold' }}> Title </TableCell>
@@ -25,7 +25,7 @@ const RecordTable = ({ records }) => {
 							<TableRow key={index}>
 								<TableCell>{ record.title }</TableCell>
 								<TableCell>{ record.author_name && record.author_name.join(', ') }</TableCell>
-								<TableCell>{ record.year }</TableCell>
+								<TableCell>{ record.publish_year?.pop() }</TableCell>
 							</TableRow>
 						))
 					}
