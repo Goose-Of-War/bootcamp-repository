@@ -11,7 +11,7 @@ const BookSearchPage = () => {
 		return fetch(`${baseURL}/search.json?title=${query}`)
 			.then(response => response.json())
 			.then(res => setRecords(res.docs))
-			.catch(() => setRecords([]));
+			.catch(console.log);
 	};
 
 

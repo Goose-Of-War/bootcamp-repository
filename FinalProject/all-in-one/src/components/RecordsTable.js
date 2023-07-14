@@ -1,36 +1,42 @@
 import React from "react";
-import { Tab, Table, TableBody, TableCell, TableFooter, TableHead, TableRow, Tabs } from '@mui/material';
+import { Tab, Table, TableBody, TableCell, TableHead, TableRow, Tabs } from '@mui/material';
 
 const RecordTable = ({ records }) => {
 	const [page, setPage] = React.useState(0);
+	if (!records.length) return (<></>);
 	return (
-		<Table sx={{ width: '80%', margin: 'auto' }}>
-			<TableHead>
-				<TableRow>
-					<TableCell sx={{ fontWeight: 'bold' }}> Title </TableCell>
-					<TableCell sx={{ fontWeight: 'bold' }}> Author </TableCell>
-					<TableCell sx={{ fontWeight: 'bold' }}> Year </TableCell>
-				</TableRow>
-			</TableHead>
-			<TableBody>
+		<>
+			<Tabs value={page} onChange={(event, value) => setPage(value)} sx={{ width: 'fit-content', margin: 'auto' }}>
 				{
-					(records || []).filter((_,i) => page * 15 < i && i < (page + 1) * 15).map((record, index) => (
-						<TableRow key={index}>
-							<TableCell>{ record.title }</TableCell>
-							<TableCell>{ record.author_name && record.author_name.join(', ') }</TableCell>
-							<TableCell>{ record.year }</TableCell>
-						</TableRow>
-					))
+					[...Array(Math.ceil(records.length / 10))].map((_, i) => <Tab label={i + 1} key={i} />)
 				}
-			</TableBody>
-			<TableFooter>
-				<Tabs value={page} onChange={(event, value) => setPage(value)}>
+			</Tabs>
+			<Table sx={{ width: '80%', margin: 'auto' }}>
+				<TableHead>
+					<TableRow>
+						<TableCell sx={{ fontWeight: 'bold' }}> Title </TableCell>
+						<TableCell sx={{ fontWeight: 'bold' }}> Author </TableCell>
+						<TableCell sx={{ fontWeight: 'bold' }}> Year </TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
 					{
-						[...Array(Math.ceil(page / 15))].map((_, i) => <Tab label={i + 1} key={i}/>)
+						(records || []).filter((_,i) => page * 10 < i && i < (page + 1) * 10).map((record, index) => (
+							<TableRow key={index}>
+								<TableCell>{ record.title }</TableCell>
+								<TableCell>{ record.author_name && record.author_name.join(', ') }</TableCell>
+								<TableCell>{ record.year }</TableCell>
+							</TableRow>
+						))
 					}
-				</Tabs>
-			</TableFooter>
-		</Table>
+				</TableBody>
+			</Table>
+			<Tabs value={page} onChange={(event, value) => setPage(value)} sx={{ width: 'fit-content', margin: 'auto' }}>
+				{
+					[...Array(Math.ceil(records.length / 10))].map((_, i) => <Tab label={i + 1} key={i} />)
+				}
+			</Tabs>
+		</>
 	);
 };
 
