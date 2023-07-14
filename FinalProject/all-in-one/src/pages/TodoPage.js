@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TodoList from '../components/TodoList';
-import TodoForm from '../components/TodoForm';
+import InputForm from '../components/InputForm';
 
 const TodoPage = () => {
 	const [list, setList] = React.useState([
@@ -21,7 +21,8 @@ const TodoPage = () => {
 
 	return (
 		<>
-			<TodoForm handleEvent={handleEvent}/>
+			<h1> To-Do App </h1>
+			<InputForm handleEvent={handleEvent} placeholder='Add To-Do' />
 			<TodoList list={list} removeTodo={removeTodo} checkTodo={checkTodo} />
 		</>
 	);
